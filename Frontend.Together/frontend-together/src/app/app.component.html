@@ -1,1 +1,3 @@
-{{ title }}
+<ul *ngFor="let weather of weatherForecast">
+  <li>{{ weather.summary }} - {{weather.temperatureF}} - {{weather.temperatureC}}</li>
+</ul>

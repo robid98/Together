@@ -11,7 +11,6 @@ E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Microsoft.O
 E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-E:\Repos\Together\Backend.Together\Backend.Together\obj\Debug\net5.0\Backend.Together.csproj.AssemblyReference.cache
 E:\Repos\Together\Backend.Together\Backend.Together\obj\Debug\net5.0\Backend.Together.GeneratedMSBuildEditorConfig.editorconfig
 E:\Repos\Together\Backend.Together\Backend.Together\obj\Debug\net5.0\Backend.Together.AssemblyInfoInputs.cache
 E:\Repos\Together\Backend.Together\Backend.Together\obj\Debug\net5.0\Backend.Together.AssemblyInfo.cs

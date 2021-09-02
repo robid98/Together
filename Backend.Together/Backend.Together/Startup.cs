@@ -29,8 +29,8 @@ namespace Backend.Together
             /* Allow Cors */
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("http://localhost:4200"));
+                options.AddPolicy("AllowAnyOrigin",
+                    builder => builder.WithOrigins("http://localhost:4200/"));
             });
 
             services.AddControllers();
@@ -49,6 +49,11 @@ namespace Backend.Together
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend.Together v1"));
             }
+
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
