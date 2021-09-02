@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7wOm5EDaTW1Zm7qIomnZaP1Y6YxS4bRfsaUx2m9HbM1ZHReuUaZ2aQJ8fblaW8dKmlt0riFY/ZiuOdJeg3HeBQ==",
+  "dgSpecHash": "xpjqzg3jdgkjfnUZ5LtA7OL+KTyz+lWmSdGsxWwK4zTZ6+KrhUw7rHaLdsZGZP8Wxcifk+YKQpW/GmZJifh5AA==",
   "success": true,
-  "projectFilePath": "E:\\Repos\\Backend.Together\\Backend.Together\\Backend.Together.csproj",
+  "projectFilePath": "E:\\Repos\\Together\\Backend.Together\\Backend.Together\\Backend.Together.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Robert\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Robert\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
