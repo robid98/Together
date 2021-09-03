@@ -1,0 +1,12 @@
+E:\Repos\Together\Backend.Together\Together.Data\bin\Debug\net5.0\Together.Data.deps.json
+E:\Repos\Together\Backend.Together\Together.Data\bin\Debug\net5.0\Together.Data.dll
+E:\Repos\Together\Backend.Together\Together.Data\bin\Debug\net5.0\ref\Together.Data.dll
+E:\Repos\Together\Backend.Together\Together.Data\bin\Debug\net5.0\Together.Data.pdb
+E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.GeneratedMSBuildEditorConfig.editorconfig
+E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.AssemblyInfoInputs.cache
+E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.AssemblyInfo.cs
+E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.csproj.CoreCompileInputs.cache
+E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.dll
+E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\ref\Together.Data.dll
+E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.pdb
+E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.csproj.AssemblyReference.cache
