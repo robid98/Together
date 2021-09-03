@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lM9ekLcrCtlBlT44Z3oEpmFnqbwdKmZ4QWf5eQHEdT7qBKl5RYg6M/y+T4xiQ+LEz7fdL3nknbHC4g4TYDHgfQ==",
+  "dgSpecHash": "mFuvjYInHDpIJKO3qGCvFbMiHaJ0O4Y00GVjHlyJhhltgINnS7COA0d1jlRC599gp4Q+TWRqAYWSQQzcJCr6HA==",
   "success": true,
-  "projectFilePath": "E:\\Repos\\Together\\Backend.Together\\Backend.Together\\Backend.Together.csproj",
+  "projectFilePath": "E:\\Repos\\Together\\Backend.Together\\Backend.Together\\Together.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Robert\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\Robert\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

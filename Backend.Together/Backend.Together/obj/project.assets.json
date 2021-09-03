@@ -712,9 +712,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Repos\\Together\\Backend.Together\\Backend.Together\\Backend.Together.csproj",
-      "projectName": "Backend.Together",
-      "projectPath": "E:\\Repos\\Together\\Backend.Together\\Backend.Together\\Backend.Together.csproj",
+      "projectUniqueName": "E:\\Repos\\Together\\Backend.Together\\Backend.Together\\Together.API.csproj",
+      "projectName": "Together.API",
+      "projectPath": "E:\\Repos\\Together\\Backend.Together\\Backend.Together\\Together.API.csproj",
       "packagesPath": "C:\\Users\\Robert\\.nuget\\packages\\",
       "outputPath": "E:\\Repos\\Together\\Backend.Together\\Backend.Together\\obj\\",
       "projectStyle": "PackageReference",
