@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Together.Data.Models
 {
     public class PostModel
     {
+        [Key]
         public Guid PostId { get; set; }
 
         public string PostDescription { get; set; }
