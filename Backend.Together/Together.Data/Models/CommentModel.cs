@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Together.Data.Models
 {
     public class CommentModel
     {
-        public Guid CommentGuid { get; set; }
+        [Key]
+        public Guid CommentId { get; set; }
 
         public string CommentDescription { get; set; }
         
