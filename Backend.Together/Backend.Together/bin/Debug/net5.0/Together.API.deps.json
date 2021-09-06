@@ -1422,6 +1422,8 @@
       "Together.Data.SQL/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "5.0.9",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.9",
           "Together.Data": "1.0.0"
         },
         "runtime": {
