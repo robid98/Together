@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hr57Nf80GZC3/eRfXmHGiouNeDZcHqEKZUGv2N7yaxJfpV7kwJji5hA+m7MHcw3jVtUWD9BPgt8JiMxMkEHWRw==",
+  "dgSpecHash": "zaVibQU3Myv1GfdAbbx0NfNAGCPeboSZrz/t0U3zZxUgwwUu+uZL2B7CLGwsMxUlBEkeMh70gVd0u0Is4ywd2w==",
   "success": true,
   "projectFilePath": "E:\\Repos\\Together\\Backend.Together\\Backend.Together\\Together.API.csproj",
   "expectedPackageFiles": [
@@ -43,7 +43,7 @@
     "C:\\Users\\Robert\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Robert\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Robert\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\Robert\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\Robert\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Robert\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\Robert\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Robert\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
