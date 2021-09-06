@@ -1,0 +1,17 @@
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\bin\Debug\net5.0\Together.Data.Repositories.deps.json
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\bin\Debug\net5.0\Together.Data.Repositories.dll
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\bin\Debug\net5.0\ref\Together.Data.Repositories.dll
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\bin\Debug\net5.0\Together.Data.Repositories.pdb
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\bin\Debug\net5.0\Together.Data.dll
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\bin\Debug\net5.0\Together.Data.SQL.dll
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\bin\Debug\net5.0\Together.Data.SQL.pdb
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\bin\Debug\net5.0\Together.Data.pdb
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\obj\Debug\net5.0\Together.Data.Repositories.csproj.AssemblyReference.cache
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\obj\Debug\net5.0\Together.Data.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\obj\Debug\net5.0\Together.Data.Repositories.AssemblyInfoInputs.cache
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\obj\Debug\net5.0\Together.Data.Repositories.AssemblyInfo.cs
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\obj\Debug\net5.0\Together.Data.Repositories.csproj.CoreCompileInputs.cache
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\obj\Debug\net5.0\Together.Data.Repositories.csproj.CopyComplete
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\obj\Debug\net5.0\Together.Data.Repositories.dll
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\obj\Debug\net5.0\ref\Together.Data.Repositories.dll
+E:\Repos\Together\Backend.Together\Together.Data.Repositories\obj\Debug\net5.0\Together.Data.Repositories.pdb

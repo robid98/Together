@@ -63,3 +63,10 @@ E:\Repos\Together\Backend.Together\Backend.Together\obj\Debug\net5.0\Together.AP
 E:\Repos\Together\Backend.Together\Backend.Together\obj\Debug\net5.0\ref\Together.API.dll
 E:\Repos\Together\Backend.Together\Backend.Together\obj\Debug\net5.0\Together.API.pdb
 E:\Repos\Together\Backend.Together\Backend.Together\obj\Debug\net5.0\Together.API.genruntimeconfig.cache
+E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Together.Data.Repositories.dll
+E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Together.Data.Repositories.pdb
+E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Together.Services.dll
+E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Together.Services.pdb
+E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\Repos\Together\Backend.Together\Backend.Together\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
