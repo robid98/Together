@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Together.Data.Models
 {
     public class ReplyModel
     {
+        [Key]
         public Guid ReplyId { get; set; }
 
         public string ReplyDescription { get; set; }

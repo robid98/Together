@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Together.Data.SQL;
+using Microsoft.Extensions.Configuration;
 
 namespace Together.API.StartupConfigurations
 {
@@ -12,6 +15,12 @@ namespace Together.API.StartupConfigurations
                 options.AddPolicy("AllowAnyOrigin",
                     builder => builder.WithOrigins("http://localhost:4200/"));
             });
+        }
+
+        public static void AddDatabaseContenxt(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<DatabaseContext>(options =>
+                  options.UseSqlServer(configuration.GetConnectionString("TogetherDatabase")));
         }
     }
 }

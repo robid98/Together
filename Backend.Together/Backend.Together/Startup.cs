@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 using Together.API.StartupConfigurations;
 
 namespace Backend.Together
@@ -21,6 +22,7 @@ namespace Backend.Together
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureCors();
+            services.AddDatabaseContenxt(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
