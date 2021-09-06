@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Together.Data.DTOs;
 using Together.Data.Models;
 using Together.Data.Repositories.Interfaces;
 using Together.Data.SQL;
@@ -24,7 +26,7 @@ namespace Together.Data.Repositories
 
         public async Task<List<PostModel>> GetAllPosts()
         {
-            return await _databaseContext.Posts.ToListAsync();
+            return await _databaseContext.Posts.OrderBy(post => post.PostDate).ToListAsync();
         }
 
         public async Task<PostModel> GetPostByGuid(Guid postId)
@@ -42,7 +44,7 @@ namespace Together.Data.Repositories
         {
             var getPost = await GetPostByGuid(post.PostId);
 
-            if(getPost != null)
+            if (getPost != null)
             {
                 getPost = post;
                 await _databaseContext.SaveChangesAsync();

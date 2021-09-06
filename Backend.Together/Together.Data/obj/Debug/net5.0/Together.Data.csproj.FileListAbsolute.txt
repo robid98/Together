@@ -9,3 +9,4 @@ E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.
 E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.dll
 E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\ref\Together.Data.dll
 E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.pdb
+E:\Repos\Together\Backend.Together\Together.Data\obj\Debug\net5.0\Together.Data.csproj.AssemblyReference.cache

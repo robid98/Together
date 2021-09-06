@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Together.Data.DTOs;
 using Together.Data.Models;
 
 namespace Together.Data.Repositories.Interfaces
