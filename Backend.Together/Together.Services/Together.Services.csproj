@@ -6,7 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Together.Data.Repositories\Together.Data.Repositories.csproj" />
+    <ProjectReference Include="..\Together.Data\Together.Data.csproj" />
   </ItemGroup>
 
 </Project>

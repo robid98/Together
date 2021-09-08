@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -10,7 +11,7 @@ namespace Together.Data.Models
         public Guid CommentId { get; set; }
 
         public string CommentDescription { get; set; }
-        
+
         public DateTime CommentDate { get; set; }
 
         public int CommentLikes { get; set; }
