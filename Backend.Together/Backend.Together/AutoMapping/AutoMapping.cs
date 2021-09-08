@@ -8,8 +8,15 @@ namespace Backend.Together.AutoMapping
     {
         public AutoMapping()
         {
+            /* Posts */
             CreateMap<PostModel, PostDTO>();
             CreateMap<PostDTO, PostModel>();
+            /* Comments */
+            CreateMap<CommentModel, CommentDTO>();
+            CreateMap<CommentDTO, CommentModel>();
+            /* Replies */
+            CreateMap<ReplyModel, ReplyDTO>();
+            CreateMap<ReplyDTO, ReplyModel>();
         }
     }
 }
