@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿using Newtonsoft.Json;
 using System;
+=======
+﻿using System;
+>>>>>>> origin/main
 using System.ComponentModel.DataAnnotations;
 
 namespace Together.Data.Models
