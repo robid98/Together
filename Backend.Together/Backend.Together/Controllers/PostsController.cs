@@ -67,12 +67,12 @@ namespace Together.API.Controllers
             return Ok(postResult.Result);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> PutTogetherPost([FromBody] PostDTO postDTO)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTogetherPost(Guid id, [FromBody] PostDTO postDTO)
         {
             _logger.LogInformation($"PostsController: The post with the {postDTO.PostId} will be updated!");
 
-            var postResult = await _postService.UpdateExistingPost(_mapper.Map<PostModel>(postDTO));
+            var postResult = await _postService.UpdateExistingPost(id, _mapper.Map<PostModel>(postDTO));
 
             if (postResult.Exception)
                 return BadRequest(postResult.Message);

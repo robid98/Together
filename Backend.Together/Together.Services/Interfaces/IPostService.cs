@@ -15,6 +15,6 @@ namespace Together.Services.Interfaces
 
         Task<ResultModel<PostDTO>> GetPostById(Guid postId);
 
-        Task<ResultModel<PostDTO>> UpdateExistingPost(PostModel post);
+        Task<ResultModel<PostDTO>> UpdateExistingPost(Guid postId, PostModel post);
     }
 }

@@ -80,9 +80,9 @@ namespace Together.Data.Repositories
             }
         }
 
-        public async Task<ResultModel<PostModel>> UpdatePost(PostModel post)
+        public async Task<ResultModel<PostModel>> UpdatePost(Guid id, PostModel post)
         {
-            var getPost = await _databaseContext.Posts.FirstOrDefaultAsync(p => p.PostId == post.PostId);
+            var getPost = await _databaseContext.Posts.FirstOrDefaultAsync(p => p.PostId == id);
 
             if (getPost != null)
             {
