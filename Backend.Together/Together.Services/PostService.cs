@@ -74,20 +74,29 @@ namespace Together.Services
         }
 
 
-        public async Task<ResultModel<PostDTO>> UpdateExistingPost(PostModel post)
+        public async Task<ResultModel<PostDTO>> UpdateExistingPost(Guid id, PostModel post)
         {
             _logger.LogInformation("Post Service: Adding a new Post!");
 
             if (!CheckPostIsValid(post))
                 return new ResultModel<PostDTO> { Success = false, Message = "Post description can't be empty" };
 
-            var updateResult = await _postRepository.UpdatePost(post);
+            var updateResult = await _postRepository.UpdatePost(id, post);
             return new ResultModel<PostDTO> 
             { 
                 Success = updateResult.Success, 
                 Exception = updateResult.Exception, 
                 Message = updateResult.Message 
             };
+        }
+
+        public async Task<ResultModel<PostDTO>> DeleteExistingPost(Guid postId)
+        {
+            _logger.LogInformation($"Post Service: Deleting the post with id {postId}!");
+
+            var deletingPostResult = await _postRepository.DeletePost(postId);
+
+            return new ResultModel<PostDTO> { Success = deletingPostResult.Success, Message = deletingPostResult.Message, Exception = deletingPostResult.Exception };
         }
 
         public bool CheckPostIsValid(PostModel post)

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Together.Data.SQL;
 
 namespace Together.Data.SQL.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210910211108_FieldUpdated")]
+    partial class FieldUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,14 +30,14 @@ namespace Together.Data.SQL.Migrations
                     b.Property<DateTime>("CommentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("CommentDeleted")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CommentDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CommentLikes")
                         .HasColumnType("int");
+
+                    b.Property<string>("IsCommentDeleted")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("PostId")
                         .HasColumnType("uniqueidentifier");
@@ -53,11 +55,11 @@ namespace Together.Data.SQL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("IsPostDeleted")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("PostDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("PostDeleted")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostDescription")
                         .HasColumnType("nvarchar(max)");
@@ -82,11 +84,11 @@ namespace Together.Data.SQL.Migrations
                     b.Property<Guid>("CommentId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("IsReplyDeleted")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("ReplyDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ReplyDeleted")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReplyDescription")
                         .HasColumnType("nvarchar(max)");

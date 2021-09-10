@@ -55,7 +55,7 @@ namespace Together.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostNewTogetherPost(PostDTO postDTO)
+        public async Task<IActionResult> PostNewTogetherPost([FromBody] PostDTO postDTO)
         {
             _logger.LogInformation("PostsController: A new post will be added in Database");
 
@@ -67,12 +67,28 @@ namespace Together.API.Controllers
             return Ok(postResult.Result);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> PutTogetherPost([FromBody] PostDTO postDTO)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTogetherPost(Guid id, [FromBody] PostDTO postDTO)
         {
             _logger.LogInformation($"PostsController: The post with the {postDTO.PostId} will be updated!");
 
-            var postResult = await _postService.UpdateExistingPost(_mapper.Map<PostModel>(postDTO));
+            var postResult = await _postService.UpdateExistingPost(id, _mapper.Map<PostModel>(postDTO));
+
+            if (postResult.Exception)
+                return BadRequest(postResult.Message);
+
+            if (!postResult.Success)
+                return NotFound(postResult.Message);
+
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTogetherPost(Guid id)
+        {
+            _logger.LogInformation($"PostsController: The post with the {id} will be deleted!");
+
+            var postResult = await _postService.DeleteExistingPost(id);
 
             if (postResult.Exception)
                 return BadRequest(postResult.Message);

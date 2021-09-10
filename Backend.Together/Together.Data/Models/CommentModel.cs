@@ -16,7 +16,7 @@ namespace Together.Data.Models
 
         public int CommentLikes { get; set; }
 
-        public bool IsCommentDeleted { get; set; }
+        public string CommentDeleted { get; set; }
 
         /* Navigation Proprieties  - One to many relationship between Posts and Comments */
         public Guid PostId { get; set; }
