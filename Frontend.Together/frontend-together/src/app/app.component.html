@@ -1,3 +1,9 @@
-<ul *ngFor="let weather of weatherForecast">
-  <li>{{ weather.summary }} - {{weather.temperatureF}} - {{weather.temperatureC}}</li>
+<ul *ngFor="let post of posts">
+  <li> Id - {{ post.postId }}
+    <br> Descriere - :{{post.postDescription}}
+    <br> Data - {{post.postDate}}
+    <br> Likes - {{post.postLikes}}
+    <br> Shares - {{post.postShares}}
+    <br> isPostDeleted - {{post.isPostDeleted}}</li>
+
 </ul>

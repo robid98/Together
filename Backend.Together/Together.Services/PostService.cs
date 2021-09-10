@@ -90,6 +90,15 @@ namespace Together.Services
             };
         }
 
+        public async Task<ResultModel<PostDTO>> DeleteExistingPost(Guid postId)
+        {
+            _logger.LogInformation($"Post Service: Deleting the post with id {postId}!");
+
+            var deletingPostResult = await _postRepository.DeletePost(postId);
+
+            return new ResultModel<PostDTO> { Success = deletingPostResult.Success, Message = deletingPostResult.Message, Exception = deletingPostResult.Exception };
+        }
+
         public bool CheckPostIsValid(PostModel post)
         {
             if (post.PostDescription == null || post.PostDescription == "")

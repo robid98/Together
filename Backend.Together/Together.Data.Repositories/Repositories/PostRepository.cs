@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Together.Data.DTOs;
 using Together.Data.Models;
 using Together.Data.Repositories.Interfaces;
 using Together.Data.SQL;
@@ -23,9 +22,28 @@ namespace Together.Data.Repositories
             _logger = logger;
         }
 
-        public Task DeletePost(PostModel post)
+        public async Task<ResultModel<PostModel>> DeletePost(Guid postId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var post = (await GetPostByGuid(postId)).Result;
+
+                if (post == null)
+                {
+                    return new ResultModel<PostModel> { Success = false, Message = "Post not found" };
+                }
+
+                _databaseContext.Remove(post);
+                _databaseContext.SaveChanges();
+
+                return new ResultModel<PostModel> { Success = true, Message = "Post deleted" };
+            }
+            catch (SqlException exception)
+            {
+                _logger.LogError($"PostController: Exception when deleting the post with id {postId} Exception - {exception.Message}");
+
+                return new ResultModel<PostModel> { Success = false, Exception = true, Message = $"A problem occured when trying to delete the post with id {postId}" };
+            }
         }
 
         public async Task<ResultModel<List<PostModel>>> GetAllPosts()
@@ -40,7 +58,7 @@ namespace Together.Data.Repositories
                 _logger.LogError($"PostController: Exception when getting all posts {exception.Message}");
 
                 return new ResultModel<List<PostModel>> { Success = false, Exception = true, Message = "A problem occured when trying get all existing Posts" };
-                }
+            }
        
         }
 
@@ -92,7 +110,7 @@ namespace Together.Data.Repositories
                     getPost.PostDate = post.PostDate;
                     getPost.PostLikes = post.PostLikes;
                     getPost.PostShares = post.PostShares;
-                    getPost.IsPostDeleted = post.IsPostDeleted;
+                    getPost.PostDeleted = post.PostDeleted;
 
                     await _databaseContext.SaveChangesAsync();
                     return new ResultModel<PostModel> { Success = true, Message = "Added with success in Database" };

@@ -14,7 +14,7 @@ namespace Together.Data.Models
 
         public int ReplyLikes { get; set; }
 
-        public bool IsReplyDeleted { get; set; }
+        public string ReplyDeleted { get; set; }
 
         /* Navigation propriety - One to Many relationship between Comment and Replies */
         public Guid CommentId { get; set; }

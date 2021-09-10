@@ -20,7 +20,7 @@ namespace Together.Data.DTOs
         [JsonProperty(PropertyName = "postShares")]
         public int PostShares { get; set; }
 
-        [JsonProperty(PropertyName = "postIsDeleted")]
-        public bool IsPostDeleted { get; set; }
+        [JsonProperty(PropertyName = "postDeleted")]
+        public string PostDeleted { get; set; }
     }
 }

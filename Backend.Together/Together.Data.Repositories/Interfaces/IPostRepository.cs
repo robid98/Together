@@ -12,6 +12,6 @@ namespace Together.Data.Repositories.Interfaces
         Task<ResultModel<PostModel>> GetPostByGuid(Guid postId);
         Task<ResultModel<PostModel>> InsertPost(PostModel post);
         Task<ResultModel<PostModel>> UpdatePost(Guid id, PostModel post);
-        Task DeletePost(PostModel post);
+        Task<ResultModel<PostModel>> DeletePost(Guid postId);
     }
 }

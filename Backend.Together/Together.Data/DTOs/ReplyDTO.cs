@@ -17,7 +17,7 @@ namespace Together.Data.DTOs
         [JsonProperty(PropertyName = "replyLikes")]
         public int ReplyLikes { get; set; }
 
-        [JsonProperty(PropertyName = "replyIsDeleted")]
-        public bool IsReplyDeleted { get; set; }
+        [JsonProperty(PropertyName = "replyDeleted")]
+        public string IsReplyDeleted { get; set; }
     }
 }
