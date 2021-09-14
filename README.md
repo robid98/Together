@@ -1,5 +1,5 @@
 # Together
-Social Application
+Social Network Application
 
 Technologies used: ASP.NET Core 5.0 ( RESTApi ), Angular 12
 
