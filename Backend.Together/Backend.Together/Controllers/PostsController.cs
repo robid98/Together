@@ -26,7 +26,7 @@ namespace Together.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<PostModel>>> GetPosts()
+        public async Task<ActionResult<List<PostDTO>>> GetPosts()
         {
             _logger.LogInformation("PostsController: Getting all Posts from Database!");
 
@@ -39,7 +39,7 @@ namespace Together.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<PostModel>>> GetPostById(Guid id)
+        public async Task<ActionResult<PostDTO>> GetPostById(Guid id)
         {
             _logger.LogInformation($"PostsController: Getting the post with the id {id}");
 
@@ -70,7 +70,7 @@ namespace Together.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTogetherPost(Guid id, [FromBody] PostDTO postDTO)
         {
-            _logger.LogInformation($"PostsController: The post with the {postDTO.PostId} will be updated!");
+            _logger.LogInformation($"PostsController: The post with the {id} will be updated!");
 
             var postResult = await _postService.UpdateExistingPost(id, _mapper.Map<PostModel>(postDTO));
 

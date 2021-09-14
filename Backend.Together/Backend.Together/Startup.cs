@@ -1,16 +1,9 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using System;
 using Together.API.StartupConfigurations;
-using Together.Data.Repositories;
-using Together.Data.Repositories.Interfaces;
-using Together.Services;
-using Together.Services.Interfaces;
 
 namespace Backend.Together
 {
@@ -27,18 +20,14 @@ namespace Backend.Together
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureCors();
-            services.AddControllers().AddNewtonsoftJson(options =>
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddNewtonsoftJsonService();
             services.AddAutoMapper(typeof(Startup));
+            services.AddAuthenticationService();
             services.AddDatabaseContenxt(Configuration);
+            services.AddInternalServices();
             services.AddControllers();
-            services.AddScoped<IPostRepository, PostRepository>();
-            services.AddScoped<IPostService, PostService>();
             services.AddRouting(options => options.LowercaseUrls = true);
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Backend.Together", Version = "v1" });
-            });
+            services.AddSwaggerService();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +48,8 @@ namespace Backend.Together
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
