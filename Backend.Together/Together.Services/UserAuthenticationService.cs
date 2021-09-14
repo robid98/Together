@@ -67,20 +67,20 @@ namespace Together.Services
             };
         }
 
-        public async Task<ResultModel<UserAuthenticationDTO>> DeleteExistingUser(string email)
+        public async Task<ResultModel<UserAuthenticationDTO>> DeleteExistingUser(Guid userId)
         {
-            _logger.LogInformation($"UserAuth Service: Deleting the user with Email {email}!");
+            _logger.LogInformation($"UserAuth Service: Deleting the user with Id {userId}!");
 
-            var deletingUserResult = await _userAuthenticationRepository.DeleteUser(email);
+            var deletingUserResult = await _userAuthenticationRepository.DeleteUser(userId);
 
             return new ResultModel<UserAuthenticationDTO> { Success = deletingUserResult.Success, Message = deletingUserResult.Message, Exception = deletingUserResult.Exception };
         }
 
-        public async Task<ResultModel<UserAuthenticationDTO>> GetUserByEmail(string userEmail)
+        public async Task<ResultModel<UserAuthenticationDTO>> GetUserById(Guid userId)
         {
-            _logger.LogInformation($"UserAuth Service: Getting the user with the Email {userEmail}");
+            _logger.LogInformation($"UserAuth Service: Getting the user with the Id {userId}");
 
-            var specificUserResult = await _userAuthenticationRepository.GetUserAuthInfoByEmail(userEmail);
+            var specificUserResult = await _userAuthenticationRepository.GetUserAuthInfoById(userId);
 
             return new ResultModel<UserAuthenticationDTO>
             {
@@ -92,7 +92,7 @@ namespace Together.Services
             };
         }
 
-        public async Task<ResultModel<UserAuthenticationDTO>> UpdateExistingUser(string email, UserAuthenticationModel user)
+        public async Task<ResultModel<UserAuthenticationDTO>> UpdateExistingUser(Guid userId, UserAuthenticationModel user)
         {
             _logger.LogInformation("UserAuth Service: Updating a User!");
 
@@ -103,7 +103,7 @@ namespace Together.Services
             if(user.Password != null)
                 user.Password = BCryptNet.HashPassword(user.Password);
 
-            var updateResult = await _userAuthenticationRepository.UpdateUser(email, user);
+            var updateResult = await _userAuthenticationRepository.UpdateUser(userId, user);
             return new ResultModel<UserAuthenticationDTO>
             {
                 Success = updateResult.Success,
@@ -112,9 +112,9 @@ namespace Together.Services
             };
         }
 
-        public async Task<bool> UserAlreadyExists(string email)
+        public async Task<bool> UserAlreadyExists(String userEmail)
         {
-            var getUser = await _userAuthenticationRepository.GetUserAuthInfoByEmail(email);
+            var getUser = await _userAuthenticationRepository.GetUserAuthInfoByEmail(userEmail);
 
             if (!getUser.Success && !getUser.Exception) /* Not found */
                 return false;

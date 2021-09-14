@@ -12,15 +12,15 @@ namespace Together.Services.Interfaces
     {
         Task<ResultModel<UserAuthenticationDTO>> AddNewUser(UserAuthenticationModel user);
 
-        Task<ResultModel<UserAuthenticationDTO>> GetUserByEmail(String userEmail);
+        Task<ResultModel<UserAuthenticationDTO>> GetUserById(Guid userId);
 
-        Task<ResultModel<UserAuthenticationDTO>> UpdateExistingUser(String email, UserAuthenticationModel user);
+        Task<ResultModel<UserAuthenticationDTO>> UpdateExistingUser(Guid userId, UserAuthenticationModel user);
 
-        Task<ResultModel<UserAuthenticationDTO>> DeleteExistingUser(String email);
+        Task<ResultModel<UserAuthenticationDTO>> DeleteExistingUser(Guid userId);
 
         Task<ResultModel<List<UserAuthenticationDTO>>> GetAllUsersAuthInfos();
 
-        Task<bool> UserAlreadyExists(String email);
+        Task<bool> UserAlreadyExists(String userEmail);
 
         PasswordScore CheckUserStrenghtPassword(String password);
 

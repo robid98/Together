@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Together.Data.DTOs;
@@ -37,12 +38,12 @@ namespace Together.API.Controllers
             return Ok(usersResult.Result);
         }
 
-        [HttpGet("{email}")]
-        public async Task<ActionResult<UserAuthenticationDTO>> GetUserByEmail(string email)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserAuthenticationDTO>> GetUserById(Guid id)
         {
-            _logger.LogInformation($"UsersAuthenticationController: Getting the user with the Email {email}");
+            _logger.LogInformation($"UsersAuthenticationController: Getting the user with the id {id}");
 
-            var specificUserResult = await _userAuthenticationService.GetUserByEmail(email);
+            var specificUserResult = await _userAuthenticationService.GetUserById(id);
 
             if (specificUserResult.Exception)
                 return BadRequest(specificUserResult.Message);
@@ -67,12 +68,12 @@ namespace Together.API.Controllers
             return Ok(userResult.Result);
         }
 
-        [HttpPut("{email}")]
-        public async Task<IActionResult> PutTogetherUser(string email, [FromBody] UserAuthenticationDTO userAuthenticationDTO)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTogetherUser(Guid id, [FromBody] UserAuthenticationDTO userAuthenticationDTO)
         {
-            _logger.LogInformation($"UsersAuthenticationController: The user with the email {email} will be updated!");
+            _logger.LogInformation($"UsersAuthenticationController: The user with the id {id} will be updated!");
 
-            var userUpdateResult = await _userAuthenticationService.UpdateExistingUser(email, _mapper.Map<UserAuthenticationModel>(userAuthenticationDTO));
+            var userUpdateResult = await _userAuthenticationService.UpdateExistingUser(id, _mapper.Map<UserAuthenticationModel>(userAuthenticationDTO));
 
             if (userUpdateResult.Exception)
                 return BadRequest(userUpdateResult.Message);
@@ -83,12 +84,12 @@ namespace Together.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("{email}")]
-        public async Task<IActionResult> DeleteTogetherUser(string email)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTogetherUser(Guid id)
         {
-            _logger.LogInformation($"UsersAuthenticationController: The user with the email {email} will be deleted!");
+            _logger.LogInformation($"UsersAuthenticationController: The user with the id {id} will be deleted!");
 
-            var userDeleteResult = await _userAuthenticationService.DeleteExistingUser(email);
+            var userDeleteResult = await _userAuthenticationService.DeleteExistingUser(id);
 
             if (userDeleteResult.Exception)
                 return BadRequest(userDeleteResult.Message);

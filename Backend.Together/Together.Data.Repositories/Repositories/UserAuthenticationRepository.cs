@@ -22,11 +22,11 @@ namespace Together.Data.Repositories.Repositories
             _logger = logger;
         }
 
-        public async Task<ResultModel<UserAuthenticationModel>> DeleteUser(string userEmail)
+        public async Task<ResultModel<UserAuthenticationModel>> DeleteUser(Guid userId)
         {
             try
             {
-                var userAuthInfo = (await GetUserAuthInfoByEmail(userEmail)).Result;
+                var userAuthInfo = (await GetUserAuthInfoById(userId)).Result;
 
                 if (userAuthInfo == null)
                 {
@@ -40,9 +40,9 @@ namespace Together.Data.Repositories.Repositories
             }
             catch (SqlException exception)
             {
-                _logger.LogError($"UserAuthRepository: Exception when deleting the User with Email {userEmail} Exception - {exception.Message}");
+                _logger.LogError($"UserAuthRepository: Exception when deleting the User with id {userId} Exception - {exception.Message}");
 
-                return new ResultModel<UserAuthenticationModel> { Success = false, Exception = true, Message = $"A problem occured when trying to delete the User with Email {userEmail}" };
+                return new ResultModel<UserAuthenticationModel> { Success = false, Exception = true, Message = $"A problem occured when trying to delete the User with Email {userId}" };
             }
         }
 
@@ -61,7 +61,7 @@ namespace Together.Data.Repositories.Repositories
             }
         }
 
-        public async Task<ResultModel<UserAuthenticationModel>> GetUserAuthInfoByEmail(String userEmail)
+        public async Task<ResultModel<UserAuthenticationModel>> GetUserAuthInfoByEmail(string userEmail)
         {
             try
             {
@@ -82,6 +82,27 @@ namespace Together.Data.Repositories.Repositories
             }
         }
 
+        public async Task<ResultModel<UserAuthenticationModel>> GetUserAuthInfoById(Guid userId)
+        {
+            try
+            {
+                var userAuthInfo = await _databaseContext.UsersAuthInfos.FirstOrDefaultAsync(user => user.UserId == userId);
+
+                if (userAuthInfo == null)
+                {
+                    return new ResultModel<UserAuthenticationModel> { Success = false, Message = "User not found" };
+                }
+
+                return new ResultModel<UserAuthenticationModel> { Success = true, Result = userAuthInfo };
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"UserAuthRepository: Exception when getting the user with id {userId} Exception - {exception.Message}");
+
+                return new ResultModel<UserAuthenticationModel> { Success = false, Exception = true, Message = $"A problem occured when trying to get the user with id {userId}" };
+            }
+        }
+
         public async Task<ResultModel<UserAuthenticationModel>> InsertUser(UserAuthenticationModel userAuthModel)
         {
             try
@@ -97,9 +118,9 @@ namespace Together.Data.Repositories.Repositories
             }
         }
 
-        public async Task<ResultModel<UserAuthenticationModel>> UpdateUser(string userEmail, UserAuthenticationModel userAuthModel)
+        public async Task<ResultModel<UserAuthenticationModel>> UpdateUser(Guid userId, UserAuthenticationModel userAuthModel)
         {
-            var getUser = await _databaseContext.UsersAuthInfos.FirstOrDefaultAsync(user => user.Email == userEmail);
+            var getUser = await _databaseContext.UsersAuthInfos.FirstOrDefaultAsync(user => user.UserId == userId);
 
             if (getUser != null)
             {
