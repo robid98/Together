@@ -10,10 +10,27 @@ namespace Together.Data.SQL
 
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<UserAuthenticationModel>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
+            /* One to One relation */
+            builder.Entity<UserAuthenticationModel>()
+                .HasOne(a => a.UserProfileModel)
+                .WithOne(a => a.UserAuthenticationModel)
+                .HasForeignKey<UserProfileModel>(c => c.UserId);
+        }
+
         public DbSet<PostModel> Posts { get; set; }
 
         public DbSet<CommentModel> Comments { get; set; }
 
         public DbSet<ReplyModel> Replies { get; set; }
+
+        public DbSet<UserAuthenticationModel> UsersAuthInfos { get; set; }
+
+        public DbSet<UserProfileModel> UsersProfiles { get; set; }
     }
 }

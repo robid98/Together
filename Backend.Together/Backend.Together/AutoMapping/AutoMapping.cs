@@ -17,6 +17,12 @@ namespace Backend.Together.AutoMapping
             /* Replies */
             CreateMap<ReplyModel, ReplyDTO>();
             CreateMap<ReplyDTO, ReplyModel>();
+            /* UserAuth */
+            CreateMap<UserAuthenticationModel, UserAuthenticationDTO>();
+            CreateMap<UserAuthenticationDTO, UserAuthenticationModel>();
+            /* UserProfile */
+            CreateMap<UserProfileModel, UserProfileDTO>();
+            CreateMap<UserProfileDTO, UserProfileModel>();
         }
     }
 }

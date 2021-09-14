@@ -12,16 +12,19 @@ namespace Together.Data.Models
 
         public string PostDescription { get; set; }
 
-        public DateTime PostDate { get; set; }
+        public DateTime? PostDate { get; set; }
 
-        public int PostLikes { get; set; }
+        public int? PostLikes { get; set; }
 
-        public int PostShares { get; set; }
+        public int? PostShares { get; set; }
 
         public string PostDeleted { get; set; }
 
         /* Navigation Propriety - One to many relationship between Posts and Comments */
         public List<CommentModel> PostComments { get; set; }
 
+        public Guid UserProfileId { get; set; }
+
+        public UserProfileModel UserProfileModel { get; set; }
     }
 }

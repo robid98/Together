@@ -12,13 +12,13 @@ namespace Together.Data.DTOs
         public string PostDescription { get; set; }
 
         [JsonProperty(PropertyName = "postDate")]
-        public DateTime PostDate { get; set; }
+        public DateTime? PostDate { get; set; }
 
         [JsonProperty(PropertyName = "postLikes")]
-        public int PostLikes { get; set; }
+        public int? PostLikes { get; set; }
 
         [JsonProperty(PropertyName = "postShares")]
-        public int PostShares { get; set; }
+        public int? PostShares { get; set; }
 
         [JsonProperty(PropertyName = "postDeleted")]
         public string PostDeleted { get; set; }
