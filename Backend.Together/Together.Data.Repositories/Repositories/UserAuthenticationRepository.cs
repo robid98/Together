@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using AutoMapper;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,11 +16,13 @@ namespace Together.Data.Repositories.Repositories
     {
         private readonly DatabaseContext _databaseContext;
         private readonly ILogger<UserAuthenticationRepository> _logger;
+        private readonly IMapper _mapper;
 
-        public UserAuthenticationRepository(DatabaseContext databaseContext, ILogger<UserAuthenticationRepository> logger)
+        public UserAuthenticationRepository(DatabaseContext databaseContext, ILogger<UserAuthenticationRepository> logger, IMapper mapper)
         {
             _databaseContext = databaseContext;
             _logger = logger;
+            _mapper = mapper;
         }
 
         public async Task<ResultModel<UserAuthenticationModel>> DeleteUser(Guid userId)
@@ -42,7 +45,7 @@ namespace Together.Data.Repositories.Repositories
             {
                 _logger.LogError($"UserAuthRepository: Exception when deleting the User with id {userId} Exception - {exception.Message}");
 
-                return new ResultModel<UserAuthenticationModel> { Success = false, Exception = true, Message = $"A problem occured when trying to delete the User with Email {userId}" };
+                return new ResultModel<UserAuthenticationModel> { Success = false, Exception = true, Message = $"A problem occured when trying to delete the User with id {userId}" };
             }
         }
 
@@ -86,7 +89,7 @@ namespace Together.Data.Repositories.Repositories
         {
             try
             {
-                var userAuthInfo = await _databaseContext.UsersAuthInfos.FirstOrDefaultAsync(user => user.UserId == userId);
+                var userAuthInfo = await _databaseContext.UsersAuthInfos.Include("UserProfileModel").FirstOrDefaultAsync(user => user.UserId == userId);
 
                 if (userAuthInfo == null)
                 {
@@ -126,11 +129,7 @@ namespace Together.Data.Repositories.Repositories
             {
                 try
                 {
-                    getUser.Email = (userAuthModel.Email != null) ? userAuthModel.Email : getUser.Email;
-                    getUser.FirstName = (userAuthModel.FirstName != null) ? userAuthModel.FirstName : getUser.FirstName;
-                    getUser.LastName = (userAuthModel.LastName != null) ? userAuthModel.LastName : getUser.LastName;
-                    getUser.Gender = (userAuthModel.Gender != null) ? userAuthModel.Gender : getUser.Gender;
-                    getUser.Password = (userAuthModel.Password != null) ? userAuthModel.Password : getUser.Password;
+                    _mapper.Map(userAuthModel, getUser);
 
                     await _databaseContext.SaveChangesAsync();
 

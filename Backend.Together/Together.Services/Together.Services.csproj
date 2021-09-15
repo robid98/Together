@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Together.Data.BlobStorage\Together.Data.BlobStorage.csproj" />
     <ProjectReference Include="..\Together.Data.Repositories\Together.Data.Repositories.csproj" />
     <ProjectReference Include="..\Together.Data\Together.Data.csproj" />
   </ItemGroup>

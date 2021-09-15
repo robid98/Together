@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using AutoMapper;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,11 +16,13 @@ namespace Together.Data.Repositories
     {
         private readonly DatabaseContext _databaseContext;
         private readonly ILogger<PostRepository> _logger;
+        private readonly IMapper _mapper;
 
-        public PostRepository(DatabaseContext databaseContext, ILogger<PostRepository> logger)
+        public PostRepository(DatabaseContext databaseContext, ILogger<PostRepository> logger, IMapper mapper)
         {
             _databaseContext = databaseContext;
             _logger = logger;
+            _mapper = mapper;
         }
 
         public async Task<ResultModel<PostModel>> DeletePost(Guid postId)
@@ -106,11 +109,7 @@ namespace Together.Data.Repositories
             {
                 try
                 {
-                    getPost.PostDescription = (post.PostDescription != null) ? post.PostDescription : getPost.PostDescription;
-                    getPost.PostDate = (post.PostDate != null) ? post.PostDate : getPost.PostDate;
-                    getPost.PostLikes = (post.PostLikes != null) ? post.PostLikes : getPost.PostLikes;
-                    getPost.PostShares = (post.PostShares != null) ? post.PostShares : getPost.PostShares;
-                    getPost.PostDeleted = (post.PostDeleted != null) ? post.PostDeleted : getPost.PostDeleted;
+                    _mapper.Map(post, getPost);
 
                     await _databaseContext.SaveChangesAsync();
                     return new ResultModel<PostModel> { Success = true, Message = "Updated with success in Database" };

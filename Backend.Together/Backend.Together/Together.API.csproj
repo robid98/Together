@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Together.Data.BlobStorage\Together.Data.BlobStorage.csproj" />
     <ProjectReference Include="..\Together.Data.Repositories\Together.Data.Repositories.csproj" />
     <ProjectReference Include="..\Together.Data.SQL\Together.Data.SQL.csproj" />
     <ProjectReference Include="..\Together.Services\Together.Services.csproj" />

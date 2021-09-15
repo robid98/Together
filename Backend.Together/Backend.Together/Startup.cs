@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Together.API.StartupConfigurations;
+using Together.Data.BlobStorage.Configurations;
 
 namespace Backend.Together
 {
@@ -24,6 +25,7 @@ namespace Backend.Together
             services.AddAutoMapper(typeof(Startup));
             services.AddAuthenticationService();
             services.AddDatabaseContenxt(Configuration);
+            services.AddBlobService(Configuration);
             services.AddInternalServices();
             services.AddControllers();
             services.AddRouting(options => options.LowercaseUrls = true);

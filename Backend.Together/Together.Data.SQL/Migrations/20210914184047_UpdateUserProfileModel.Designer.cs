@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Together.Data.SQL;
 
 namespace Together.Data.SQL.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210914184047_UpdateUserProfileModel")]
+    partial class UpdateUserProfileModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,23 +147,23 @@ namespace Together.Data.SQL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("BirthdayDate")
+                    b.Property<DateTime>("BirthdayDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ProfileDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserFriendsNumber")
+                    b.Property<int>("UserFriendsNumber")
                         .HasColumnType("int");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("UserPostsNumber")
+                    b.Property<int>("UserPostsNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserProfileImgGeneratedName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("UserProfileImg")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("UserProfileId");
 
