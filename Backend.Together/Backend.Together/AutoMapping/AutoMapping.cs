@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Together.API.AutoMapping;
 using Together.Data.DTOs;
 using Together.Data.Models;
 
@@ -23,6 +24,20 @@ namespace Backend.Together.AutoMapping
             /* UserProfile */
             CreateMap<UserProfileModel, UserProfileDTO>();
             CreateMap<UserProfileDTO, UserProfileModel>();
+
+            CreateMap<UserProfileModel, UserProfileModel>()
+                .Ignore(record => record.UserProfileId)
+                .Ignore(record => record.UserId)
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<PostModel, PostModel>()
+                .Ignore(record => record.PostId)
+                .Ignore(record => record.UserProfileId)
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<UserAuthenticationModel, UserAuthenticationModel>()
+                .Ignore(record => record.UserId)
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

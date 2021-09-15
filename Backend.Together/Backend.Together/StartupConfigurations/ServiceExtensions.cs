@@ -36,10 +36,12 @@ namespace Together.API.StartupConfigurations
         {
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserAuthenticationRepository, UserAuthenticationRepository>();
+            services.AddScoped<IUserProfileRepository, UserProfileRepository>();
 
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
+            services.AddScoped<IUserProfileService, UserProfileService>();
         }
 
         public static void AddSwaggerService(this IServiceCollection services)

@@ -9,11 +9,15 @@ namespace Together.Data.Models
         [Key]
         public Guid UserProfileId { get; set; }
 
-        public byte[] UserProfileImg { get; set; }
+        public string UserProfileImgGeneratedName { get; set; }
 
-        public int UserPostsNumber { get; set; }
+        public DateTime? BirthdayDate { get; set; }
 
-        public int UserFriendsNumber { get; set; }
+        public string ProfileDescription { get; set; }
+
+        public int? UserPostsNumber { get; set; }
+
+        public int? UserFriendsNumber { get; set; }
 
         /* Navigation Proprieties */
         public Guid UserId { get; set; }

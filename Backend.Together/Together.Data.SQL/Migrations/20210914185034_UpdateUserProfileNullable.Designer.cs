@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Together.Data.SQL;
 
 namespace Together.Data.SQL.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210914185034_UpdateUserProfileNullable")]
+    partial class UpdateUserProfileNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,8 +162,8 @@ namespace Together.Data.SQL.Migrations
                     b.Property<int?>("UserPostsNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserProfileImgGeneratedName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("UserProfileImg")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("UserProfileId");
 
