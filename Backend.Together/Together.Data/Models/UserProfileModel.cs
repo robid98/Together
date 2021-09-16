@@ -9,7 +9,7 @@ namespace Together.Data.Models
         [Key]
         public Guid UserProfileId { get; set; }
 
-        public string UserProfileImgGeneratedName { get; set; }
+        public string UserProfileImgBlobLink{ get; set; }
 
         public DateTime? BirthdayDate { get; set; }
 

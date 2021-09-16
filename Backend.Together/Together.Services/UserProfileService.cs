@@ -97,9 +97,11 @@ namespace Together.Services
             }
 
             /* Verify if user already have a profile Photo - and delete it from Blob */
-            if(userProfile.Result.UserProfileImgGeneratedName.Length > 0)
+            if(userProfile.Result.UserProfileImgBlobLink.Length > 0)
             {
-                var deleteBlobResult = await _blobStorage.DeleteBlobAsync(userProfile.Result.UserProfileImgGeneratedName);
+                var splitBlobLink = userProfile.Result.UserProfileImgBlobLink.Split('/');
+
+                var deleteBlobResult = await _blobStorage.DeleteBlobAsync(splitBlobLink[splitBlobLink.Length - 1]);
 
                 if(!deleteBlobResult.Success)
                 {
@@ -120,7 +122,20 @@ namespace Together.Services
 
             if (blobStorageUpdateResult.Success)
             {
-                var userProfileUpdated = new UserProfileModel { UserProfileImgGeneratedName = blobName };
+                /* Get blob link */
+                var blobLinkResult = _blobStorage.GetBlobLink(blobName);
+
+                if(!blobLinkResult.Success)
+                {
+                    return new ResultModel<UserProfileDTO>
+                    {
+                        Success = blobStorageUpdateResult.Success,
+                        Exception = blobStorageUpdateResult.Exception,
+                        Message = blobStorageUpdateResult.Message
+                    };
+                }
+
+                var userProfileUpdated = new UserProfileModel { UserProfileImgBlobLink = blobLinkResult.Result };
 
                 var updateResult = await UpdateExistingUserProfile(userAuthenticationGuid, userProfileUpdated);
 
