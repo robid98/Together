@@ -9,8 +9,8 @@ namespace Together.Data.DTOs
         [JsonProperty(PropertyName = "userprofileid")]
         public Guid UserProfileId { get; set; }
 
-        [JsonProperty(PropertyName = "userprofileimggeneratedname")]
-        public string UserProfileImgGeneratedName { get; set; }
+        [JsonProperty(PropertyName = "userprofileimgbloblink")]
+        public string UserProfileImgBlobLink { get; set; }
 
         [JsonProperty(PropertyName = "birthdaydate")]
         public DateTime? BirthdayDate { get; set; }
