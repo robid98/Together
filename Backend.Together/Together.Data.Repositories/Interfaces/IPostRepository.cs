@@ -8,10 +8,11 @@ namespace Together.Data.Repositories.Interfaces
 {
     public interface IPostRepository
     {
-        Task<ResultModel<List<PostModel>>> GetAllPosts();
-        Task<ResultModel<PostModel>> GetPostByGuid(Guid postId);
-        Task<ResultModel<PostModel>> InsertPost(PostModel post);
-        Task<ResultModel<PostModel>> UpdatePost(Guid id, PostModel post);
-        Task<ResultModel<PostModel>> DeletePost(Guid postId);
+        Task<ResultModel<List<PostModel>>> GetAllUsersPosts();
+        Task<ResultModel<List<PostModel>>> GetUserPostsByGuid(Guid userAuthenticationGuid);
+        Task<ResultModel<PostModel>> GetUserSpecificPost(Guid userAuthenticationGuid, Guid postId);
+        Task<ResultModel<PostModel>> InsertUserPost(Guid userAuthenticationGuid, PostModel post);
+        Task<ResultModel<PostModel>> UpdateExistingPost(Guid userAuthenticationGuid, Guid postId, PostModel post);
+        Task<ResultModel<PostModel>> DeleteUserPost(Guid userAuthenticationGuid, Guid postId);
     }
 }

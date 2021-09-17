@@ -10,7 +10,7 @@ using Together.Services.Interfaces;
 
 namespace Together.API.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1")]
     [ApiController]
     public class PostsController : ControllerBase
     {
@@ -25,12 +25,12 @@ namespace Together.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<PostDTO>>> GetPosts()
+        [HttpGet("usersauth/usersprofile/allusersposts")]
+        public async Task<ActionResult<List<PostDTO>>> GetAllUsersPosts()
         {
             _logger.LogInformation("PostsController: Getting all Posts from Database!");
 
-            var postsResult = await _postService.GetAllPosts();
+            var postsResult = await _postService.GetAllUsersPosts();
 
             if (!postsResult.Success)
                 return BadRequest(postsResult.Message);
@@ -38,12 +38,12 @@ namespace Together.API.Controllers
             return Ok(postsResult.Result);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<PostDTO>> GetPostById(Guid id)
+        [HttpGet("usersauth/{id}/usersprofile/posts")]
+        public async Task<ActionResult<List<PostDTO>>> GetUserPostsById(Guid id)
         {
-            _logger.LogInformation($"PostsController: Getting the post with the id {id}");
+            _logger.LogInformation($"PostsController: Getting the posts for the user with id {id}");
 
-            var specificPostResult = await _postService.GetPostById(id);
+            var specificPostResult = await _postService.GetUserPostsById(id);
 
             if (specificPostResult.Exception)
                 return BadRequest(specificPostResult.Message);
@@ -54,12 +54,12 @@ namespace Together.API.Controllers
             return Ok(specificPostResult.Result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> PostNewTogetherPost([FromBody] PostDTO postDTO)
+        [HttpPost("usersauth/{id}/usersprofile/posts")]
+        public async Task<IActionResult> PostNewUserTogetherPost(Guid id, [FromBody] PostDTO postDTO)
         {
             _logger.LogInformation("PostsController: A new post will be added in Database");
 
-            var postResult = await _postService.AddNewPost(_mapper.Map<PostModel>(postDTO));
+            var postResult = await _postService.AddNewUserPost(id, _mapper.Map<PostModel>(postDTO));
 
             if (!postResult.Success)
                 return BadRequest(postResult.Message);
@@ -67,12 +67,12 @@ namespace Together.API.Controllers
             return Ok(postResult.Result);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTogetherPost(Guid id, [FromBody] PostDTO postDTO)
+        [HttpPut("usersauth/{id}/usersprofile/posts/{postid}")]
+        public async Task<IActionResult> PutUserTogetherPost(Guid id, Guid postid, [FromBody] PostDTO postDTO)
         {
-            _logger.LogInformation($"PostsController: The post with the {id} will be updated!");
+            _logger.LogInformation($"PostsController: The post with the {id} will be updated for the user with id {id}!");
 
-            var postResult = await _postService.UpdateExistingPost(id, _mapper.Map<PostModel>(postDTO));
+            var postResult = await _postService.UpdateExistingUserPost(id, postid, _mapper.Map<PostModel>(postDTO));
 
             if (postResult.Exception)
                 return BadRequest(postResult.Message);
@@ -83,12 +83,12 @@ namespace Together.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTogetherPost(Guid id)
+        [HttpDelete("usersauth/{id}/usersprofile/posts/{postid}")]
+        public async Task<IActionResult> DeleteTogetherUserPost(Guid id, Guid postid)
         {
             _logger.LogInformation($"PostsController: The post with the {id} will be deleted!");
 
-            var postResult = await _postService.DeleteExistingPost(id);
+            var postResult = await _postService.DeleteExistingUserPost(id, postid);
 
             if (postResult.Exception)
                 return BadRequest(postResult.Message);
