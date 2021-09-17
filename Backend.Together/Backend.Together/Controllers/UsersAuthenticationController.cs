@@ -10,7 +10,7 @@ using Together.Services.Interfaces;
 
 namespace Together.API.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1")]
     [ApiController]
     public class UsersAuthenticationController : ControllerBase
     {
@@ -25,7 +25,7 @@ namespace Together.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("usersauth")]
         public async Task<ActionResult<List<UserAuthenticationDTO>>> GetUserAuthInfos()
         {
             _logger.LogInformation("UsersAuthenticationController: Getting all Users from Database!");
@@ -38,7 +38,7 @@ namespace Together.API.Controllers
             return Ok(usersResult.Result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("usersauth/{id}")]
         public async Task<ActionResult<UserAuthenticationDTO>> GetUserById(Guid id)
         {
             _logger.LogInformation($"UsersAuthenticationController: Getting the user with the id {id}");
@@ -55,7 +55,7 @@ namespace Together.API.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("usersauth")]
         public async Task<IActionResult> PostNewUser([FromBody] UserAuthenticationDTO userAuthenticationDTO)
         {
             _logger.LogInformation("UsersAuthenticationController: A new user will be added in Database");
@@ -68,7 +68,7 @@ namespace Together.API.Controllers
             return Ok(userResult.Result);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("usersauth/{id}")]
         public async Task<IActionResult> PutTogetherUser(Guid id, [FromBody] UserAuthenticationDTO userAuthenticationDTO)
         {
             _logger.LogInformation($"UsersAuthenticationController: The user with the id {id} will be updated!");
@@ -84,7 +84,7 @@ namespace Together.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("usersauth/{id}")]
         public async Task<IActionResult> DeleteTogetherUser(Guid id)
         {
             _logger.LogInformation($"UsersAuthenticationController: The user with the id {id} will be deleted!");

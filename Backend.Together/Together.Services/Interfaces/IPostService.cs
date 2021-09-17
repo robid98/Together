@@ -9,14 +9,14 @@ namespace Together.Services.Interfaces
 {
     public interface IPostService
     {
-        Task<ResultModel<PostDTO>> AddNewPost(PostModel post);
+        Task<ResultModel<PostDTO>> AddNewUserPost(Guid userAuthenticationGuid, PostModel post);
 
-        Task<ResultModel<List<PostDTO>>> GetAllPosts();
+        Task<ResultModel<List<PostDTO>>> GetAllUsersPosts();
 
-        Task<ResultModel<PostDTO>> GetPostById(Guid postId);
+        Task<ResultModel<List<PostDTO>>> GetUserPostsById(Guid userAuthenticationGuid);
 
-        Task<ResultModel<PostDTO>> UpdateExistingPost(Guid postId, PostModel post);
+        Task<ResultModel<PostDTO>> UpdateExistingUserPost(Guid userAuthenticationGuid, Guid postId, PostModel post);
 
-        Task<ResultModel<PostDTO>> DeleteExistingPost(Guid postId);
+        Task<ResultModel<PostDTO>> DeleteExistingUserPost(Guid userAuthenticationGuid, Guid postId);
     }
 }

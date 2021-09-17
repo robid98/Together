@@ -21,6 +21,12 @@ namespace Together.Data.SQL
                 .HasOne(a => a.UserProfileModel)
                 .WithOne(a => a.UserAuthenticationModel)
                 .HasForeignKey<UserProfileModel>(c => c.UserId);
+
+            /* One to Many , UserProfile - Posts */
+            builder.Entity<PostModel>()
+                .HasOne<UserProfileModel>(s => s.UserProfileModel)
+                .WithMany(g => g.UserPosts)
+                .HasForeignKey(s => s.UserProfileId);
         }
 
         public DbSet<PostModel> Posts { get; set; }

@@ -27,7 +27,7 @@ namespace Together.API.Controllers
             _blobStorage = blobStorage;
         }
 
-        [HttpPost("userAuthentication/{id}/userprofile")]
+        [HttpPost("usersauth/{id}/usersprofile")]
         public async Task<IActionResult> PostNewUserProfile(Guid id, [FromBody] UserProfileDTO userProfileDTO)
         {
             _logger.LogInformation("UsersProfileController: A new user profile will be added in Database");
@@ -43,7 +43,7 @@ namespace Together.API.Controllers
             return Ok(userResult.Result);
         }
 
-        [HttpGet("userAuthentication/{id}/userprofile")]
+        [HttpGet("usersauth/{id}/usersprofile")]
         public async Task<ActionResult<UserProfileDTO>> GetUserProfileById(Guid id)
         {
             _logger.LogInformation($"UsersProfileController: Getting the user with the auth id {id}");
@@ -59,7 +59,7 @@ namespace Together.API.Controllers
             return Ok(specificUserResult.Result);
         }
 
-        [HttpDelete("userAuthentication/{id}/userprofile")]
+        [HttpDelete("usersauth/{id}/usersprofile")]
         public async Task<IActionResult> DeleteTogetherUserProfile(Guid id)
         {
             _logger.LogInformation($"UsersProfileController: The user profile with the id {id} will be deleted!");
@@ -75,7 +75,7 @@ namespace Together.API.Controllers
             return Ok();
         }
 
-        [HttpPut("userAuthentication/{id}/userprofile")]
+        [HttpPut("usersauth/{id}/usersprofile")]
         public async Task<IActionResult> PutTogetherUserProfile(Guid id, [FromBody] UserProfileDTO userProfileDTO)
         {
             _logger.LogInformation($"UsersProfileController: The user profile with the id {id} will be updated!");
@@ -91,7 +91,7 @@ namespace Together.API.Controllers
             return Ok();
         }
 
-        [HttpPut("userAuthentication/{id}/userprofile/profilepicture")]
+        [HttpPut("usersauth/{id}/usersprofile/profilepicture")]
         public async Task<IActionResult> PutTogetherUserProfilePicture(Guid id, [FromForm] FileModel model)
         {
             _logger.LogInformation($"UsersProfileController: The user profile picture with the id {id} will be updated!");
@@ -107,7 +107,7 @@ namespace Together.API.Controllers
             return Ok();
         }
 
-        [HttpGet("userAuthentication/{id}/userprofile/profilepicture")]
+        [HttpGet("usersauth/{id}/usersprofile/profilepicture")]
         public async Task<IActionResult> GetTogetherUserProfilePicture(string fileName)
         {
             _logger.LogInformation($"UsersProfileController: Getting the file with the name {fileName}");

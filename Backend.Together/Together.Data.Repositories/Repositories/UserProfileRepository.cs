@@ -49,7 +49,7 @@ namespace Together.Data.Repositories.Repositories
 
             if(userAuthResult.Exception)
             {
-                _logger.LogError($"UserProfileRepository: Exception when creating a new user {userAuthResult.Message}");
+                _logger.LogError($"UserProfileRepository: Exception when creating a new user profile {userAuthResult.Message}");
                 return new ResultModel<UserProfileModel> { Success = false, Exception = true, Message = userAuthResult.Message };
             }
 

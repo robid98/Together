@@ -53,7 +53,7 @@ namespace Together.Data.Repositories.Repositories
         {
             try
             {
-                var allUsers = await _databaseContext.UsersAuthInfos.OrderBy(user => user.Email).ToListAsync();
+                var allUsers = await _databaseContext.UsersAuthInfos.Include(x => x.UserProfileModel.UserPosts).OrderBy(user => user.Email).ToListAsync();
                 return new ResultModel<List<UserAuthenticationModel>> { Success = true, Result = allUsers };
             }
             catch (Exception exception)
@@ -89,7 +89,7 @@ namespace Together.Data.Repositories.Repositories
         {
             try
             {
-                var userAuthInfo = await _databaseContext.UsersAuthInfos.Include("UserProfileModel").FirstOrDefaultAsync(user => user.UserId == userId);
+                var userAuthInfo = await _databaseContext.UsersAuthInfos.Include("UserProfileModel.UserPosts").FirstOrDefaultAsync(user => user.UserId == userId);
 
                 if (userAuthInfo == null)
                 {
