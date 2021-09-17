@@ -22,5 +22,8 @@ namespace Together.Data.DTOs
 
         [JsonProperty(PropertyName = "postDeleted")]
         public string PostDeleted { get; set; }
+
+        [JsonProperty(PropertyName = "userprofileid")]
+        public Guid UserProfileId { get; set; }
     }
 }
